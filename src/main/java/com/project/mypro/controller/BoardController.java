@@ -2,7 +2,6 @@ package com.project.mypro.controller;
 
 import javax.validation.Valid;
 
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,7 +36,7 @@ public class BoardController {
 
     @GetMapping("/list")
     public String list(Model model, @PageableDefault(size = 2) Pageable pageable,
-    				   @RequestParam(required = false, defaultValue = "") String msg,
+    				   @RequestParam(value="msg", required=false) String msg,
                        @RequestParam(required = false, defaultValue = "") String searchText) {
         Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
         int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
@@ -66,7 +65,7 @@ public class BoardController {
 // 두개
     @Transactional(rollbackFor=Exception.class)
     @RequestMapping(value="/form", method=RequestMethod.POST)
-    public String greetingSubmit(@Valid Board board, RedirectAttributes redirectAttributes) throws Exception{
+    public String greetingSubmit(@Valid Board board, RedirectAttributes rrtr) throws Exception{
     	try{
 //        boardRepository2.save(board2);
         boardRepository.save(board);
@@ -76,7 +75,8 @@ public class BoardController {
     		
     		return "redirect:/board/list";
     	}
-    	redirectAttributes.addAttribute("msg","ok");
+//    	rrtr.addFlashAttribute("msg","ok");
+    	rrtr.addAttribute("msg","ok");
     	return "redirect:/board/list";
     }
     

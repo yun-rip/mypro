@@ -20,20 +20,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                    .antMatchers("/", "/account/register", "/css/**").permitAll()
-                    .anyRequest().authenticated()
-                    .and()
-                .formLogin()
-                    .loginPage("/account/login")
-                    .permitAll()
-                    .and()
-                .logout()
-                    .permitAll();
-    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeRequests()
+//                    .antMatchers("/board/register", "/css/**","/welcome-jsp.do","/welcome-board.do").permitAll()
+//                    .anyRequest().authenticated()
+//                    .and()
+//                .formLogin()
+//                    .loginPage("/board/login")
+//                    .permitAll()
+//                    .and()
+//                .logout()
+//                    .permitAll();
+//    }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth)

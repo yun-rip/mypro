@@ -15,6 +15,7 @@
 </head>
 
 <body>
+
 		  <main role="main" class="container">
 
         <div class="starter-template">
@@ -32,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" th:classappend="${menu} == 'home'? 'active'">
-                    <a class="nav-link" href="#" th:href="@{/}">홈 <span class="sr-only" th:if="${menu} == 'home'">(current)</span></a>
+                    <a class="nav-link" href="#" th:href="@{/board/home}">홈 <span class="sr-only" th:if="${menu} == 'home'">(current)</span></a>
                 </li>
                 <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">
                     <a class="nav-link" href="#" th:href="@{/board/list}">게시판 <span class="sr-only" th:if="${menu} == 'board'">(current)</span></a>
@@ -40,7 +41,7 @@
 
             </ul>
             	
-                <a class="btn btn-secondary my-2 my-sm-0" th:href="@{/account/login}" sec:authorize="isAuthenticated()">Login</a>
+                <a class="btn btn-secondary my-2 my-sm-0" th:href="@{/board/login}" sec:authorize="isAuthenticated()">Login</a>
             
 	            <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method= "POST" sec:authorize="isAuthenticated()">
 	            	<span class="text-white" sec:authentication="name" >사용자</span>

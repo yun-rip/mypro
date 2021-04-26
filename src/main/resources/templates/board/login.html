@@ -15,8 +15,8 @@
 </head>
 
 <body class="text-center">
-    <form class="form-signin" th:action="@{/account/login}" method="post">
-        <a th:href="@{/}"><img class="mb-4" src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"></a>
+    <form class="form-signin" th:action="@{/board/login}" method="post">
+        <a th:href="@{/board/login?logout}"><img class="mb-4" src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"></a>
         <div th:if="${param.error}" class="alert alert-danger" role="alert">
             아이디 혹은 비밀번호가 틀렸습니다.
         </div>

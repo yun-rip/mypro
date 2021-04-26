@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -14,20 +15,19 @@
     <title>글 작성</title>
 
 </head>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script> 
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<script type="text/javascript"> 
+
 	//<![CDATA[ 
 		
 		$(function() {
 			 $("#valid").validate(); 
-		
 		});
 		//]]> 
 	</script>
-
+	
 <body>
-     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:fragment="menu(menu)">
+     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" >
         <a class="navbar-brand" href="#">My Project</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" th:classappend="${menu} == 'home'? 'active'">
-                    <a class="nav-link" href="#" th:href="@{/}">홈 <span class="sr-only" th:if="${menu} == 'home'">(current)</span></a>
+                    <a class="nav-link" href="#" th:href="@{/board/home}">홈 <span class="sr-only" th:if="${menu} == 'home'">(current)</span></a>
                 </li>
                 <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">
                     <a class="nav-link" href="#" th:href="@{/board/list}">게시판 <span class="sr-only" th:if="${menu} == 'board'">(current)</span></a>
@@ -45,7 +45,7 @@
 
             </ul>
             	
-                <a class="btn btn-secondary my-2 my-sm-0" th:href="@{/account/login}" sec:authorize="isAuthenticated()">Login</a>
+                <a class="btn btn-secondary my-2 my-sm-0" th:href="@{/board/login}" sec:authorize="isAuthenticated()">Login</a>
             
 	            <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method= "POST" sec:authorize="isAuthenticated()">
 	            	<span class="text-white" sec:authentication="name" >사용자</span>
@@ -76,9 +76,10 @@
                 <div class="invalid-feedback" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
                 <input type="hidden" id="index" value="완료!">
      			</div>
-             
             </div> 
             
+            <div>
+			</div>
         <input type="hidden" name="_method" value="delete"/>
             <div class="text-left">
                 <a type="button" class="btn btn-primary" th:href="@{/board/list}">삭제</a>
@@ -114,7 +115,6 @@
 
     </div>
 
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -126,6 +126,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+        	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+
 </body>
 
 </html>

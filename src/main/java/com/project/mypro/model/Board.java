@@ -10,7 +10,6 @@ import javax.validation.constraints.Size;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,6 +25,5 @@ public class Board{
     @Size(min=2, max=30, message = "제목은 2자이상 30자 이하입니다.")
     private String title;
     @NotNull
-//    @Size(min=2, max=30, message = "내용은 2자이상 30자 이하입니다.")
     private String content;
 }
